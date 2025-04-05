@@ -97,7 +97,7 @@ app_license = "mit"
 # Name of the app being installed is passed as an argument
 
 # before_app_install = "goods_receipt_checker.utils.before_app_install"
-# after_app_install = "goods_receipt_checker.utils.after_app_install"
+after_app_install = "goods_receipt_checker.setup.after_app_install"
 
 # Integration Cleanup
 # -------------------
@@ -137,13 +137,14 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+    "Purchase Receipt": {
+        "after_insert": "goods_receipt_checker.utils.update_goods_received_status",
+    },
+    "Purchase Invoice": {
+        "validate": "goods_receipt_checker.utils.update_purchase_invoice_goods_received_status",
+    }
+}
 
 # Scheduled Tasks
 # ---------------
@@ -242,3 +243,6 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = [
+    {"dt": "Custom Field", "filters": [["module", "=", "Goods Receipt Checker"]]},
+]
