@@ -83,7 +83,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "goods_receipt_checker.install.before_install"
-# after_install = "goods_receipt_checker.install.after_install"
+after_install = "goods_receipt_checker.setup.after_install"
 
 # Uninstallation
 # ------------
@@ -97,7 +97,7 @@ app_license = "mit"
 # Name of the app being installed is passed as an argument
 
 # before_app_install = "goods_receipt_checker.utils.before_app_install"
-after_app_install = "goods_receipt_checker.setup.after_app_install"
+# after_app_install = "goods_receipt_checker.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------

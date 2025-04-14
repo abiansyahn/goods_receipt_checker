@@ -1,6 +1,6 @@
 import frappe
 
-def after_app_install():
+def after_install():
     check_purchase_receipt_exists_for_purchase_order_and_invoice()
 
 def check_purchase_receipt_exists_for_purchase_order_and_invoice():
